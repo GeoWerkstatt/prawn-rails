@@ -9,9 +9,20 @@ module PrawnRails
     end
 
     def call(template)
-      "pdf = PrawnRails::Document.new;" +
-      template.source +
-      ";self.output_buffer=pdf.render;"
+      %Q(
+      if @filename
+        headers["Content-Disposition"] = "attachment; filename=" + @filename + ".pdf"
+      else
+        headers["Content-Disposition"] = "attachment;"
+      end
+
+      pdf = PrawnRails::Document.new
+
+      # inline the sourcecode of the template
+      #{template.source}
+
+      self.output_buffer = pdf.render
+      )
     end
   end
 end

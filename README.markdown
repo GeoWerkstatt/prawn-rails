@@ -27,6 +27,9 @@ end`
 
 For more documentation go to [the manual](http://prawn.majesticseacreature.com/manual.pdf)
 
+If you set the instance variable `@filename` in the controller, it will be used as
+the filename for the generated pdf.
+
 ### Build in helpers
 * *html_strip(html)*
 Removes the html tags from a string	 
