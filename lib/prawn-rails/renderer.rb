@@ -16,7 +16,7 @@ module PrawnRails
         headers["Content-Disposition"] = "attachment;"
       end
 
-      pdf = PrawnRails::Document.new
+      pdf = PrawnRails::Document.new(PrawnRails.config.marshal_dump)
 
       # inline the sourcecode of the template
       #{template.source}
